@@ -48,8 +48,10 @@ def test(n: int):
                 conn.run('select pg_sleep(%s)' % sleep1())
                 time.sleep(0.01)
                 conn.commit()
-        except Exception:
+        except Exception as ex:
+            conn.rollback()
             logging.exception('Error %d', n)
+            raise ex
     logging.warning('Complete %d', n)
     time.sleep(sleep1())
     pass
