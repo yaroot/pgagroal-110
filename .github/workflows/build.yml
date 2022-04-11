@@ -15,7 +15,7 @@ jobs:
         cd hikaritest
         sbt universal:packageBin
         mv target/universal/*.zip ..
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v3
       with:
         name: hikaritest
         path: hikaritest-*.zip
